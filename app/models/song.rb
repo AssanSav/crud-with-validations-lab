@@ -4,7 +4,8 @@ class Song < ApplicationRecord
     validate :not_twice_in_the_same_year?
 
     def not_twice_in_the_same_year?
-        if self.all.any? {|a| a.title == title && a.artist_name == artist_name && a.release_year == release_year}
+        #binding.pry
+        if Song.all.any? {|a| a.title == title && a.artist_name == artist_name && a.release_year == release_year}
             errors.add(:release_year, "Forbidden to release the same song title twice within a year!")
         end
     end
