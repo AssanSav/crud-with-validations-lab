@@ -1,6 +1,5 @@
 class Song < ApplicationRecord
     validates :title, presence: true
-    validates :released, inclusion: {in: [true, false]}
     validates :release_year, inclusion: {in: 1..Time.current.year}, if: :released?
     validate :not_twice_in_the_same_year?
 
